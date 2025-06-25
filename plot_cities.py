@@ -6,7 +6,8 @@ from mpl_toolkits.basemap import Basemap
 cities = [["Chicago",42, -87],
           ["Boston", 42, -71],
           ["New York", 41, -74],
-          ["Seattle", 48, -122],]
+          ["Seattle", 48, -122],
+          ["San Francisco", 37, -122],]
 scale = 5
 
 # %%
@@ -17,8 +18,14 @@ map.drawcoastlines()
 map.drawcountries()
 map.drawstates()
 
+watercolor = "lightskyblue"
+map.fillcontinents(color='seagreen',lake_color=watercolor)
+map.drawmapboundary(fill_color=watercolor)
+
 # Get the location of each city and plot it
 for (city, latitude, longitude) in cities:
     x, y = map(longitude, latitude)
     map.plot(x, y, marker='o',color='Red')
 plt.show()
+
+# %%
