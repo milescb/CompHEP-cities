@@ -1,6 +1,7 @@
 # %%
 import matplotlib.pyplot as plt
 from mpl_toolkits.basemap import Basemap
+import datetime as dt
 
 # %%
 cities = [["Chicago",42, -87],
@@ -14,18 +15,17 @@ scale = 5
 map = Basemap(llcrnrlon=-119,llcrnrlat=22,urcrnrlon=-64,urcrnrlat=49,
         projection='lcc',lat_1=30,lat_2=45,lon_0=-95)
 
+map.etopo(scale=0.5, alpha=0.5)
 map.drawcoastlines()
 map.drawcountries()
 map.drawstates()
 
-
 watercolor = "lightskyblue"
-map.fillcontinents(color='seagreen',lake_color=watercolor)
-map.drawmapboundary(fill_color=watercolor)
+map.fillcontinents(color='seagreen',lake_color=watercolor, alpha=0.5)
 map.drawparallels(range(20, 60, 10), labels=[1,0,0,0])
 map.drawmeridians(range(-120, -60, 20), labels=[0,0,0,1])
-map.etopo(scale=0.5, alpha=0.5)
 map.drawrivers(color='#0000ff')
+map.nightshade(dt.datetime.now(dt.timezone.utc))
 
 # Get the location of each city and plot it
 for (city, latitude, longitude) in cities:
