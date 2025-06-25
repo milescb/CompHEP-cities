@@ -1,13 +1,20 @@
+# %%
 import matplotlib.pyplot as plt
 from mpl_toolkits.basemap import Basemap
 
-cities = [["Chicago",48, -100],
-          ["Boston", 49, -90]]
+# %%
+cities = [["Chicago",42, -87],
+          ["Boston", 42, -71],
+          ["New York", 41, -74],
+          ["Seattle", 48, -122],]
 scale = 5
 
+# %%
 map = Basemap(llcrnrlon=-119,llcrnrlat=22,urcrnrlon=-64,urcrnrlat=49,
-        projection='lcc',lat_1=32,lat_2=45,lon_0=-95)
+        projection='lcc',lat_1=30,lat_2=45,lon_0=-95)
 
+map.drawcoastlines()
+map.drawcountries()
 map.drawstates()
 
 # Get the location of each city and plot it
