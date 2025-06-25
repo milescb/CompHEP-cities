@@ -17,12 +17,14 @@ map = Basemap(llcrnrlon=-119,llcrnrlat=22,urcrnrlon=-64,urcrnrlat=49,
 map.drawcoastlines()
 map.drawcountries()
 map.drawstates()
-map.etopo(scale=0.5, alpha=0.5)
 
 
 watercolor = "lightskyblue"
 map.fillcontinents(color='seagreen',lake_color=watercolor)
 map.drawmapboundary(fill_color=watercolor)
+map.drawparallels(range(20, 60, 10), labels=[1,0,0,0])
+map.drawmeridians(range(-120, -60, 20), labels=[0,0,0,1])
+map.etopo(scale=0.5, alpha=0.5)
 
 # Get the location of each city and plot it
 for (city, latitude, longitude) in cities:
